@@ -1,0 +1,87 @@
+    <div class="block-section">
+      <!--[if mso | IE]>
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+      <div style="Margin:0px auto;max-width:600px;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;text-align:center;vertical-align:middle;">
+                <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:199.8px;"
+            >
+          <![endif]-->
+                <div class="mj-column-per-33 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="center" class="edit-image" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:5px;padding-bottom:10px;padding-left:0px;word-break:break-word;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                          <tbody>
+                            <tr>
+                              <td style="width:194px;"> <a href="#" target="_blank">
+          
+      <img alt="" height="auto" src="http://placehold.it/400x250" style="-block-edit: true; border: 0; display: block; outline: none; text-decoration: none; height: auto; width: 100%;" width="194">
+    
+        </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--[if mso | IE]>
+            </td>
+          
+            <td
+               class="" style="vertical-align:top;width:399.6px;"
+            >
+          <![endif]-->
+                <div class="mj-column-per-66 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="left" class="edit-text" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:10px;padding-left:5px;word-break:break-word;">
+                        <div class="text-center" style="-block-edit: true; font-family: 'Myriad Pro','PT Sans',Arial,Helvetica,sans-serif; font-size: 18px; line-height: 100%; text-align: left; color: #000000;"> This allows the reader to scan through it. Often articles are linked for further reading. </div>
+                      </td>
+                    </tr>
+                    <tr style="-block-region: true; -block-remove: true;">
+                      <td align="left" vertical-align="middle" class="text-center edit-button edit-region edit-remove" style="font-size:0px;padding:10px 25px;padding-right:0px;padding-bottom:20px;padding-left:5px;word-break:break-word;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="button-center" style="border-collapse:separate;line-height:100%;">
+                          <tr>
+                            <td align="center" bgcolor="#414141" role="presentation" style="border:none;border-radius:3px;cursor:auto;padding:10px 25px;background:#414141;" valign="middle"> <a href="#" style="-block-edit: true; background: #414141; color: #ffffff; font-family: 'Myriad Pro','PT Sans',Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 700; line-height: 100%; Margin: 0; text-decoration: none; text-transform: none;"
+                                target="_blank">
+              Call to Action
+            </a> </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      <![endif]-->
+    </div>

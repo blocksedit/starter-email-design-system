@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en">
+    <title>Starter Email Design System</title>
+    <meta name="description" content="Email design system template." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/
+         v2.0 | 20110126
+         License: none (public domain)
+      */
+
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed,
+      figure, figcaption, footer, header, hgroup,
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure,
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+
+      body {
+        line-height: 1;
+      }
+
+      ol, ul {
+        list-style: none;
+      }
+
+      blockquote, q {
+        quotes: none;
+      }
+
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Global */
+
+      body {
+        padding: 50px 40px 50px 300px;
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.3em;
+        color: #222;
+      }
+      @media (max-width: 960px) {
+        body {
+          padding: 30px 30px 30px 250px;
+          font-size: 16px;
+        }
+      }
+      @media (max-width: 800px) {
+        body {
+          padding: 20px;
+        }
+      }
+
+      /* Text formatting */
+
+      strong {
+        font-weight: 600;
+      }
+      em {
+        font-style: italic;
+      }
+
+      a {
+        color: #222;
+      }
+
+      h1, h2, h3, h4, h5 {
+        line-height: 1.1em;
+      }
+      h1 {
+        margin-bottom: 20px;
+        font-size: 40px;
+        font-weight: 600;
+      }
+      h2 {
+        margin-bottom: 20px;
+        font-size: 32px;
+        font-weight: 600;
+      }
+      h3 {
+        margin-top: 70px;
+        margin-bottom: 30px;
+        border-bottom: #222 2px solid;
+        padding-bottom: 10px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      h4 {
+        margin-top: 70px;
+        margin-bottom: 10px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      @media (max-width: 960px) {
+        h1 {
+          font-size: 36px;
+        }
+        h2 {
+          font-size: 30px;
+        }
+        h3 {
+          font-size: 22px;
+        }
+        h4 {
+          font-size: 18px;
+        }
+      }
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        margin-bottom: 15px;
+        line-height: 1.3em;
+      }
+      p.intro {
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+
+      .button {
+        display: inline-block;
+        margin: 0;
+        background-color: #ddd;
+        border: 0;
+        border-radius: 5px;
+        padding: 6px 14px;
+        text-decoration: none;
+        font-size: inherit;
+        font-weight: 400;
+        vertical-align: baseline;
+      }
+      .button:hover {
+        cursor: pointer;
+      }
+
+      table th, table td {
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      h3 .anchor {
+        display: inline-block;
+        margin-left: -20px;
+        width: 20px;
+        text-decoration: none;
+        font-weight: 300;
+        color: #666;
+      }
+
+      .highlight {
+        color: #ff0000;
+      }
+
+      /* Index navigation */
+
+      #index {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #eee;
+        width: 260px;
+        height: 100%;
+        padding: 30px;
+        padding-top: 60px;
+        overflow-y: auto;
+        font-size: 16px;
+      }
+      #index h4 {
+        margin-top: 0;
+        font-size: 16px;
+      }
+      #index li {
+        margin-bottom: 5px;
+      }
+      #index li ul {
+        margin-bottom: 20px;
+        margin-left: 18px;
+        list-style: square;
+      }
+      @media (max-width: 960px) {
+        #index {
+          width: 220px;
+          padding: 30px 20px;
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 800px) {
+        #index {
+          position: relative;
+          width: 100%;
+          columns: 2;
+        }
+      }
+      @media (max-width: 600px) {
+        #index {
+          columns: 1;
+        }
+      }
+
+      /* Sections */
+
+      section {
+        display: inline-block;
+        width: 880px;
+        padding: 30px 0;
+      }
+
+      section ul {
+        margin-bottom: 20px;
+        list-style: disc;
+      }
+      section ul li {
+        margin-bottom: 10px;
+        margin-left: 20px;
+      }
+
+      section .sections {
+        list-style: none;
+      }
+
+      section .sections li {
+        margin-bottom: 20px;
+        margin-left: 0;
+      }
+
+      section .screenshot {
+        border: #ccc 1px solid;
+      }
+      @media (max-width: 1280px) {
+        section {
+          width: 100%;
+        }
+        section .screenshot {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      section .guidelines {
+        list-style: none;
+      }
+      section .guidelines li {
+        margin-left: 0;
+      }
+
+      /* Misc */
+
+      .colors {
+        margin-bottom: 0;
+        list-style: none;
+      }
+      .colors li {
+        display: inline-block;
+        margin-left: 0;
+        width: 200px;
+      }
+      .colors li p {
+        margin-bottom: 5px;
+        line-height: 1.1em;
+      }
+      .colors li .color {
+        float: left;
+        margin-right: 10px;
+        border: #ddd 1px solid;
+        border-radius: 2px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .fonts {
+        list-style: none;
+      }
+      .fonts li {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 0;
+      }
+      .fonts li .font {
+        display: inline-block;
+        border: #ddd 1px solid;
+        border-radius: 2px;
+        padding: 10px 20px;
+        font-size: 30px;
+      }
+
+      .visuals img {
+        margin-right: 10px;
+      }
+
+      code {
+        display: inline-block;
+        max-width: 100%;
+        border-radius: 2px;
+        background-color: #eee;
+        padding: 2px 6px 0 6px;
+        font-family: "Courier New", Courier, Helvetica, Arial, serif;
+        font-weight: 300;
+        line-height: 1.2em;
+        overflow-x: scroll;
+      }
+      code.window {
+        display: block;
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 14px 15px 11px 15px;
+        white-space: nowrap;
+      }
+
+      .layouts {
+        list-style: none;
+      }
+      .layouts li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-left: 0;
+        width: 275px;
+        vertical-align: top;
+      }
+      .layouts li img {
+        width: 100%;
+        height: auto;
+      }
+
+      .releases {
+        font-size: 16px;
+      }
+      .releases li {
+        margin-bottom: 3px;
+      }
+
+      .credits {
+        margin-top: 30px;
+        background-color: #eee;
+        padding: 20px;
+        font-size: 16px;
+      }
+      .credits p {
+        margin-bottom: 0;
+      }
+
+      /* Print properties */
+
+      @media print {
+        body {
+          margin: 50px;
+          padding: 0;
+        }
+        .hide-print {
+          display: none;
+        }
+        section {
+          display: block;
+          page-break-after: always;
+        }
+        article, h3, h4, ul, ol, blockquote, table, img.screenshot {
+          page-break-inside: avoid;
+        }
+        img.screenshot {
+          width: 75%;
+          height: auto;
+        }
+      }
+    </style>
+    <script>
+    function copyMyText(elementId) {
+      var aux = document.createElement("input");
+      aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+      document.body.appendChild(aux);
+      aux.select();
+      document.execCommand("copy");
+      document.body.removeChild(aux);
+    }
+    </script>
+  </head>
+
+<body>
+
+<section style="padding-top: 0;">
+  <h1>Starter Email Design System</h1>
+  <p class="intro">Documentation, tools, and resources to help create consistency for branded emails. The <a href="https://blocksedit.com/starter-email-template/" target="_blank">Starter Email Template</a> is used as an example reference template.</p>
+</section>
+
+<ul id="index" class="hide-print">
+  <li>
+    <h4>Branding</h4>
+    <ul>
+      <li><a href="#colors-type">Colors and type</a></li>
+      <li><a href="#logo">Logo usage</a></li>
+      <li><a href="#visuals">Photos and visuals</a></li>
+    </ul>
+  </li>
+  <li>
+    <h4>Writing</h4>
+    <ul>
+      <li><a href="#mechanics">Mechanics</a></li>
+      <li><a href="#content">Content</a></li>
+      <li><a href="#utm-parameters">UTM parameters</a></li>
+      <li><a href="#share-links">Custom share links</a></li>
+    </ul>
+  </li>
+  <li>
+    <h4>Template</h4>
+    <ul>
+      <li><a href="#layouts">Layouts</a></li>
+      <li><a href="#header-footer">Header, footer</a></li>
+    </ul>
+  </li>
+  <li>
+    <h4>Sections</h4>
+    <ul>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#two-columns">Two columns</a></li>
+      <li><a href="#three-columns">Three columns</a></li>
+      <li><a href="#rows">Rows</a></li>
+    </ul>
+  </li>
+  <li>
+    <h4>Components</h4>
+    <ul>
+      <li><a href="#titles">Titles</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+    </ul>
+  </li>
+  <li>
+    <h4>Other</h4>
+    <ul>
+      <li><a href="#special-characters">Special characters</a></li>
+      <li><a href="#changelog">Changelog</a></li>
+    </ul>
+  </li>
+</ul>
+
+<section>
+  <h2>Branding</h2>
+  <p>Refer to current brand guidelines: a styleguide, logo requirements, etc. Any related design documentation that may be available. And any design patterns that are used outside email campaigns for other marketing efforts.</p>
+
+  <h3 id="colors-type"><a href="#colors-type" class="anchor">#</a>Colors and type</h3>
+
+  <h4>Color palette</h4>
+  <ul class="colors">
+    <li>
+      <p class="color" style="background-color: #000000;">&nbsp;</p>
+      <p>Black</p>
+      <p><code>#000000</code></p>
+    </li>
+    <li>
+      <p class="color" style="background-color: #414141;">&nbsp;</p>
+      <p>Dark grey</p>
+      <p><code>#414141</code></p>
+    </li>
+    <li>
+      <p class="color" style="background-color: #eeeeee;">&nbsp;</p>
+      <p>Light grey</p>
+      <p><code>#eeeeee</code></p>
+    </li>
+  </ul>
+  <ul class="guidelines">
+    <li>ℹ️ Black is used for text</li>
+    <li>ℹ️ Dark grey is used for buttons or navigation</li>
+    <li>ℹ️ Light grey is used as a background highlight</li>
+  </ul>
+
+  <h4>Fonts</h4>
+  <ul class="fonts">
+    <li>
+      <p class="font" style="font-family: 'Helvetica Neue'; font-weight: 600;">Helvetica Neue, 600 weight</p>
+      <p><code>font-family:'Helvetica Neue','Arial',sans-serif; font-weight: 600;</code></p>
+      <ul class="guidelines">
+        <li>ℹ️ For titles, buttons</li>
+      </ul>
+    </li>
+    <li>
+      <p class="font" style="font-family: 'Helvetica Neue'; font-weight: 300;">Helvetica Neue, 300 weight</p>
+      <p><code>font-family:'Helvetica Neue','Arial',sans-serif; font-weight: 300;</code></p>
+      <ul class="guidelines">
+        <li>ℹ️ For text</li>
+      </ul>
+    </li>
+    <li>
+      <p class="font" style="font-family: 'Arial';">Arial</p>
+      <p><code>font-family:'Helvetica Neue','Arial',sans-serif;</code></p>
+      <ul class="guidelines">
+        <li>ℹ️ Fallback font</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="logo"><a href="#logo" class="anchor">#</a>Logo usage</h3>
+  <p>How to use company logo within content and as part of visual elements. This might also be found in a brand styleguide.</p>
+  <p class="logo"><img src="img/email-mindfulness-logo.png" width="200" /></p>
+  <ul class="guidelines">
+    <li>❌ Don't make the logo bigger</li>
+    <li>✅ Always centered at the top, with white space on the left and right</li>
+    <li>ℹ️ Lack of accompanying text focuses on central email message</li>
+  </ul>
+
+  <h3 id="visuals"><a href="#visuals" class="anchor">#</a>Photos and visuals</h3>
+  <p>The types of photos, graphics and icons to use and where to find them, or examples of them to refer to.</p>
+  <p class="visuals"><img src="img/natalia-figueredo-f1O4eekgz44-unsplash-modified.jpg" width="300" /> <img src="img/kuo-chiao-lin-4upJkLW4PFg-unsplash-modified.jpg" width="300" /></p>
+  <ul class="guidelines">
+    <li>ℹ️ Meditation series of photos used in the <a href="https://blocksedit.com/starter-email-template/" target="_blank">Email Mindfulness</a> example template</li>
+    <li>ℹ️ Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a></li>
+  </ul>
+  <p class="visuals"><img src="img/icon-breathe.png" width="180" /> <img src="img/icon-health.png" width="180" /> <img src="img/icon-brain.png" width="180" /></p>
+  <ul class="guidelines">
+    <li>ℹ️ Mindfulness series of icons used in the <a href="https://blocksedit.com/starter-email-template/" target="_blank">Email Mindfulness</a> example template</li>
+    <li>ℹ️ Icons from <a href="https://thenounproject.com" target="_blank">The Noun Project</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h2>Writing</h2>
+
+  <h3 id="mechanics"><a href="#mechanics" class="anchor">#</a>Mechanics</h3>
+  <ul class="guidelines">
+    <li>ℹ️ <strong>Subject Line</strong> - the first impression of what the message is about, enticing the reader to open the message</li>
+    <li>ℹ️ <strong>Preheader</strong> - short summary text following the subject line when viewing an email in an inbox</li>
+    <li>❌ Avoid all caps and punctuation in subject lines, except for dashes and colons</li>
+    <li>✅ Keep the preheader text short and simple; use to tell readers what the email is about, why it’s relevant, and to support your subject line</li>
+  </ul>
+
+  <h3 id="content"><a href="#content" class="anchor">#</a>Content</h3>
+  <ul class="guidelines">
+    <li>✅ Keep the length of the email short, concise, about one page maximum in length. Newsletters may be longer, but use links to share further details.</li>
+    <li>✅ Use bullet points to identify key points in the message and repeat the main message throughout the campaign</li>
+    <li>✅ A Call to Action is important for persuading readers to click on your content</li>
+    <li>✅ Be clear and concise in your CTA</li>
+    <li>✅ Build contextual content around your CTA</li>
+  </ul>
+
+  <h3 id="utm-parameters"><a href="#utm-parameters" class="anchor">#</a>UTM parameters</h3>
+  <p>All links should be tagged using the appropriate UTM parameters, including linked images. Here's how:</p>
+  <code class="window">https://blocksedit.com/starter-email-design-system/?utm_source=email-newsletter&amp;utm_medium=email&amp;utm_campaign=04-2020&amp;utm_content=logo</code>
+  <ul>
+    <li><strong>Website URL</strong></li>
+    <li><strong>utm_source</strong> - referrer</li>
+    <li><strong>utm_medium</strong> - marketing campaign type, always "email" in this case</li>
+    <li><strong>utm_campaign</strong> - name for current email campaign</li>
+    <li><strong>utm_content</strong> - content piece it came from, optional</li>
+<!--
+    <li>utm_term - keyword, optional</li>
+-->
+  </ul>
+
+  <h3 id="share-links"><a href="#share-links" class="anchor">#</a>Custom share links</h3>
+  <p>Be sure to test all links by copying and pasting them in your browser.</p>
+  <h4>Twitter</h4>
+  <code class="window">https://twitter.com/intent/tweet?text=Use%20a%20design%20system%20for%20your%20emails&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;hashtags=emailgeeks,email%20design</code>
+  <ul>
+    <li><strong>text</strong> - tweet text; use <code>%20</code> in place of spaces</li>
+    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
+    <li><strong>hashtags</strong> - optional hashtags; use a comma to separate; use <code>%20</code> in place of spaces</li>
+  </ul>
+
+  <h4>LinkedIn</h4>
+  <code class="window">https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;title=Email%20Design%20System&amp;summary=Use%20a%20design%20system%20for%20your%20emails</code>
+  <ul>
+    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
+    <li><strong>title</strong> - article title/headline; use <code>%20</code> in place of spaces</li>
+    <li><strong>summary</strong> - short blurb; use <code>%20</code> in place of spaces</li>
+  </ul>
+  <h4>Facebook</h4>
+  <code class="window">https://www.facebook.com/sharer.php?s=100&amp;p[title]=Email%20Design%20System&amp;p[summary]=Use%20a%20design%20system%20for%20your%20emails&amp;p[images][0]=https%3A%2F%2Fblocksedit.com%2Fimg%2Fappicon.png&amp;p[url]=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
+  <ul>
+    <li><strong>title</strong> - article title/headline; use <code>%20</code> in place of spaces</li>
+    <li><strong>summary</strong> - short blurb; use <code>%20</code> in place of spaces</li>
+    <li><strong>image</strong> - preview image URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
+    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
+  </ul>
+  <h4>Email</h4>
+  <code class="window">mailto:?subject=Email%20Design%20System&amp;body=Use%20a%20design%20system%20for%20your%20emails:%20https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
+  <ul>
+    <li><strong>subject</strong> - subject line; use <code>%20</code> in place of spaces</li>
+    <li><strong>body</strong> - short blurb; use <code>%20</code> in place of spaces</li>
+    <li>Include website URL at the end; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
+  </ul>
+
+</section>
+
+<section>
+  <h2>Template</h2>
+
+  <h3 id="layouts"><a href="#layouts" class="anchor">#</a>Layouts</h3>
+  <p>Examples of template layouts to use as a starting point.</p>
+
+  <ul class="layouts">
+    <li>
+      <h4>Basic</h4>
+      <p><img src="img/basic-layout.png" width="275" class="screenshot" /></p>
+      <p><a href="code/basic.html" target="_blank" class="button">Get Code</a></p>
+    </li>
+    <li>
+      <h4>Welcome</h4>
+      <p><img src="img/welcome-layout.png" width="275" class="screenshot" /></p>
+      <p><a href="code/welcome.html" target="_blank" class="button">Get Code</a></p>
+    </li>
+    <li>
+      <h4>Hero</h4>
+      <p><img src="img/hero-layout.png" width="275" class="screenshot" /></p>
+      <p><a href="code/hero.html" target="_blank" class="button">Get Code</a></p>
+    </li>
+    <li>
+      <h4>Marketing</h4>
+      <p><img src="img/marketing-layout.png" width="275" class="screenshot" /></p>
+      <p><a href="code/marketing.html" target="_blank" class="button">Get Code</a></p>
+    </li>
+    <li>
+      <h4>Newsletter</h4>
+      <p><img src="img/newsletter-layout.png" width="275" class="screenshot" /></p>
+      <p><a href="code/newsletter.html" target="_blank" class="button">Get Code</a></p>
+    </li>
+  </ul>
+
+  <h3 id="header-footer"><a href="#header-footer" class="anchor">#</a>Header, footer</h3>
+
+  <article>
+    <h4>Header</h4>
+    <p><img src="img/section-header.png" width="620" class="screenshot" /></p>
+    <p><a href="code/header.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Replace the image with a logo</li>
+      <li>✅ Include a title/tagline</li>
+      <li>❌ Don't make title text too long (no more than a couple of lines)</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Navigation</h4>
+    <p><img src="img/section-navigation.png" width="620" class="screenshot" /></p>
+    <p><a href="code/navigation.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>❌ No more than 5 items</li>
+      <li>✅ Keep titles short, 1-2 words</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Footer</h4>
+    <p><img src="img/section-footer.png" width="620" class="screenshot" /></p>
+    <p><a href="code/footer.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>ℹ️ Unsubscribe link doesn't need to change</li>
+      <li>ℹ️ Email address is processed when email is sent out</li>
+    </ul>
+  </article>
+</section>
+
+<section>
+  <h2>Sections</h2>
+
+  <h3 id="featured"><a href="#featured" class="anchor">#</a>Featured</h3>
+
+  <article>
+    <h4>Banner</h4>
+    <p><img src="img/section-banner.png" width="620" class="screenshot" /></p>
+    <p><a href="code/banner.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>ℹ️ Image width: 1200 pixels</li>
+      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Hero</h4>
+    <p><img src="img/section-hero.png" width="620" class="screenshot" /></p>
+    <p><a href="code/hero.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Call-to-action button is optional</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Intro</h4>
+    <p><img src="img/section-intro.png" width="620" class="screenshot" /></p>
+    <p><a href="code/intro.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Headline and call-to-action button are optional</li>
+    </ul>
+  </article>
+
+  <h3 id="two-columns"><a href="#two-columns" class="anchor">#</a>Two columns</h3>
+
+  <article>
+    <h4>Image left</h4>
+    <p><img src="img/section-image-left.png" width="620" class="screenshot" /></p>
+    <p><a href="code/image-left.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Headline and call-to-action button are optional</li>
+      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
+      <li>ℹ️ Image width: 600px</li>
+      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Image right</h4>
+    <p><img src="img/section-image-right.png" width="620" class="screenshot" /></p>
+    <p><a href="code/image-right.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Headline and call-to-action button are optional</li>
+      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
+      <li>ℹ️ Image width: 600px</li>
+      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
+    </ul>
+  </article>
+  <article>
+    <h4>Two-column</h4>
+    <p><img src="img/section-two-col.png" width="620" class="screenshot" /></p>
+    <p><a href="code/two-column.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Images, headlines, and call-to-action buttons are optional</li>
+      <li>✅ Even number of items recommended when possible</li>
+      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
+      <li>ℹ️ Images Width: 600px</li>
+      <li>ℹ️ Images Height: Flexible (auto adjusts layout)</li>
+    </ul>
+  </article>
+
+  <h3 id="three-columns"><a href="#three-columns" class="anchor">#</a>Three columns</h3>
+
+  <article>
+    <h4>Three-column</h4>
+    <p><img src="img/section-three-col.png" width="620" class="screenshot" /></p>
+    <p><a href="code/three-column.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>✅ Images, headlines, and call-to-action links are optional</li>
+      <li>❌ Don't make text too long, try to keep it to three lines</li>
+      <li>ℹ️ Images Width: 400px</li>
+      <li>ℹ️ Images Height: Flexible (auto adjusts layout)</li>
+    </ul>
+  </article>
+
+  <h3 id="rows"><a href="#rows" class="anchor">#</a>Rows</h3>
+
+  <article>
+    <h4>Row</h4>
+    <p><img src="img/section-row.png" width="620" class="screenshot" /></p>
+    <p><a href="code/row.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>❌ Don't make text too long, try to keep it to 2-3 lines</li>
+      <li>ℹ️ Image width: 400px</li>
+      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
+    </li>
+  </article>
+</section>
+
+<section>
+  <h2>Components</h2>
+
+  <h3 id="titles"><a href="#titles" class="anchor">#</a>Titles</h3>
+
+  <article>
+    <h4>Title text</h4>
+    <p><img src="img/component-title.png" height="50" class="screenshot" /></p>
+    <p><a href="code/title-text.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>ℹ️ Can be added above text areas</li>
+    </li>
+  </article>
+
+  <h3 id="buttons"><a href="#buttons" class="anchor">#</a>Buttons</h3>
+
+  <article>
+    <h4>Call to action button</h4>
+    <p><img src="img/component-button.png" height="50" class="screenshot" /></p>
+    <p><a href="code/call-to-action-button.txt" target="_blank" class="button">Get Code</a></p>
+    <ul class="guidelines">
+      <li>ℹ️ Can be added below text areas</li>
+    </li>
+  </article>
+</section>
+
+<section>
+  <h2>Other</h2>
+
+  <div class="hide-print">
+    <h3 id="special-characters"><a href="#special-characters" class="anchor">#</a>Special characters</h3>
+    <article>
+      <p>Click "Copy" to copy to your clipboard. Then paste in your email.</p>
+      <table>
+        <tbody>
+          <tr>
+            <td id="bullet-point">•</td>
+            <td>Bullet point</td>
+            <td><button class="button copy" onclick="copyMyText('bullet-point')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="left-quote">“</td>
+            <td>Left curly quote marks</td>
+            <td><button class="button copy" onclick="copyMyText('left-quote')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="right-quote">”</td>
+            <td>Right curly quote marks</td>
+            <td><button class="button copy" onclick="copyMyText('right-quote')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="en-dash">–</td>
+            <td>En Dash</td>
+            <td><button class="button copy" onclick="copyMyText('en-dash')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="em-dash">—</td>
+            <td>Em Dash</td>
+            <td><button class="button copy" onclick="copyMyText('em-dash')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="copyright">©</td>
+            <td>Copyright symbol</td>
+            <td><button class="button copy" onclick="copyMyText('copyright')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="registered">®</td>
+            <td>Registered symbol</td>
+            <td><button class="button copy" onclick="copyMyText('registered')">Copy</button></td>
+          </tr>
+          <tr>
+            <td id="trademark">™</td>
+            <td>Trademark</td>
+            <td><button class="button copy" onclick="copyMyText('trademark')">Copy</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
+
+  <h3 id="changelog"><a href="#changelog" class="anchor">#</a>Changelog</h3>
+  <article>
+    <ul class="releases">
+      <li>5/6/2020: Initial version</li>
+    </ul>
+  </article>
+</section>
+
+<section class="credits">
+  <p>The initial version of this design system template was made by the <a href="https://blocksedit.com" target="_blank">Blocks Edit</a> team. While a design system doc works as a reference point for your organization to use, <a href="https://blocksedit.com/implementation/" target="_blank">Blocks Edit is a visual editor for your components</a>. So your team can build emails on their own while still following your design system's guidelines.</p>
+</section>
+
+</body>
+</html>
