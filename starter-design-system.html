@@ -163,6 +163,19 @@
         font-size: 24px;
       }
 
+      form input[type='text'] {
+        border: #ccc 1px solid;
+        border-radius: 2px;
+        width: 100%;
+        padding: 4px 8px;
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+      }
+      form input[type='text']:disabled {
+        background-color: #eee;
+      }
+
       .button {
         display: inline-block;
         margin: 0;
@@ -408,6 +421,7 @@
       }
     </style>
     <script>
+    /* Copy text from HTML element */
     function copyMyText(elementId) {
       var aux = document.createElement("input");
       aux.setAttribute("value", document.getElementById(elementId).innerHTML);
@@ -415,6 +429,61 @@
       aux.select();
       document.execCommand("copy");
       document.body.removeChild(aux);
+    }
+
+    /* Copy text from text field */
+    function copyMyTextField(elementId) {
+      var copyTextField = document.getElementById(elementId);
+      copyTextField.select(); 
+      copyTextField.setSelectionRange(0, 99999); /* For mobile devices */
+      document.execCommand("copy");
+    }
+
+    /* UTM link generator */
+    function buildUtmLink(form) {
+      var utmurl = form.utmurl.value;
+      var utmsource = form.utmsource.value;
+      var utmmedium = form.utmmedium.value;
+      var utmcampaign = form.utmcampaign.value;
+      var utmcontent = form.utmcontent.value;
+
+      document.getElementById('utmlink').value = utmurl + '?utm_source=' + utmsource + '&utm_medium=' + utmmedium + '&utm_campaign=' + utmcampaign + '&utm_content=' + utmcontent;
+    }
+
+    /* Twitter link generator */
+    function buildTwitterLink(form) {
+      var twittertext = encodeURIComponent(form.twittertext.value);
+      var twitterurl = encodeURIComponent(form.twitterurl.value);
+      var twitterhashtags = encodeURIComponent(form.twitterhashtags.value);
+
+      document.getElementById('twitterlink').value = 'https://twitter.com/intent/tweet?text=' + twittertext + '&url=' + twitterurl + '&hashtags=' + twitterhashtags;
+    }
+
+    /* LinkedIn link generator */
+    function buildLinkedInLink(form) {
+      var linkedinurl = encodeURIComponent(form.linkedinurl.value);
+      var linkedintitle = encodeURIComponent(form.linkedintitle.value);
+      var linkedinsummary = encodeURIComponent(form.linkedinsummary.value);
+
+      document.getElementById('linkedinlink').value = 'https://www.linkedin.com/shareArticle?mini=true&url=' + linkedinurl + '&title=' + linkedintitle + '&summary=' + linkedinsummary;
+    }
+
+    /* Facebook link generator */
+    function buildFacebookLink(form) {
+      var facebooktitle = encodeURIComponent(form.facebooktitle.value);
+      var facebooksummary = encodeURIComponent(form.facebooksummary.value);
+      var facebookimage = encodeURIComponent(form.facebookimage.value);
+      var facebookurl = encodeURIComponent(form.facebookurl.value);
+
+      document.getElementById('facebooklink').value = 'https://www.facebook.com/sharer.php?s=100&p[title]=' + facebooktitle + '&p[summary]=' + facebooksummary + '&p[images][0]=' + facebookimage + '&p[url]=' + facebookurl;
+    }
+
+    /* Email link generator */
+    function buildEmailLink(form) {
+      var emailsubject = encodeURIComponent(form.emailsubject.value);
+      var emailbody = encodeURIComponent(form.emailbody.value);
+
+      document.getElementById('emaillink').value = 'mailto:?subject=' + emailsubject + '&body=' + emailbody;
     }
     </script>
   </head>
@@ -576,51 +645,122 @@
   </ul>
 
   <h3 id="utm-parameters"><a href="#utm-parameters" class="anchor">#</a>UTM parameters</h3>
-  <p>All links should be tagged using the appropriate UTM parameters, including linked images. Here's how:</p>
+  <p>All links should be tagged using the appropriate UTM parameters, including linked images. Here's an example:</p>
   <code class="window">https://blocksedit.com/starter-email-design-system/?utm_source=email-newsletter&amp;utm_medium=email&amp;utm_campaign=04-2020&amp;utm_content=logo</code>
-  <ul>
-    <li><strong>Website URL</strong></li>
-    <li><strong>utm_source</strong> - referrer</li>
-    <li><strong>utm_medium</strong> - marketing campaign type, always "email" in this case</li>
-    <li><strong>utm_campaign</strong> - name for current email campaign</li>
-    <li><strong>utm_content</strong> - content piece it came from, optional</li>
-<!--
-    <li>utm_term - keyword, optional</li>
--->
-  </ul>
+  <p>Build your own:</p>
+  <form id="utmtool">
+    <p>
+      <label for="utmurl"><strong>Website URL</strong></label><br/>
+      <input type="text" name="utmurl" size="20" placeholder="https://">
+    </p>
+    <p>
+      <label for="utmsource"><strong>utm_source</strong></label> - referrer; all lowercase with hyphens, no spaces<br/>
+      <input type="text" name="utmsource" size="20" placeholder="source-title">
+    </p>
+    <p>
+      <label for="utmmedium"><strong>utm_medium</strong></label> - marketing campaign type, always "email" in this case; all lowercase with hyphens, no spaces<br/>
+      <input type="text" name="utmmedium" size="20" value="email" placeholder="medium-name">
+    </p>
+    <p>
+      <label for="utmcampaign"><strong>utm_campaign</strong></label> - name for current email campaign; all lowercase with hyphens, no spaces<br/>
+      <input type="text" name="utmcampaign" size="20" placeholder="campaign-name">
+    </p>
+    <p>
+      <label for="utmcontent"><strong>utm_content</strong></label> - content piece it came from, optional; all lowercase with hyphens, no spaces<br/>
+      <input type="text" name="utmcontent" size="20" placeholder="content-type">
+    </p>
+  <!--
+    <p>utm_term - keyword, optional</p>
+  -->
+    <p><input type="button" class="button" value="Build UTM link" onclick="buildUtmLink(this.form)"></p>
+    <p><input type="text" id="utmlink" value="?utm_source=&amp;utm_medium=email&amp;utm_campaign=&amp;utm_content=" disabled></p>
+    <p><input type="button" class="button copy" value="Copy UTM link" onclick="copyMyTextField('utmlink')"></p>
+  </form>
 
   <h3 id="share-links"><a href="#share-links" class="anchor">#</a>Custom share links</h3>
   <p>Be sure to test all links by copying and pasting them in your browser.</p>
+
   <h4>Twitter</h4>
+  <p>Example:</p>
   <code class="window">https://twitter.com/intent/tweet?text=Use%20a%20design%20system%20for%20your%20emails&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;hashtags=emailgeeks,email%20design</code>
-  <ul>
-    <li><strong>text</strong> - tweet text; use <code>%20</code> in place of spaces</li>
-    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
-    <li><strong>hashtags</strong> - optional hashtags; use a comma to separate; use <code>%20</code> in place of spaces</li>
-  </ul>
+  <p>Build your own:</p>
+  <form id="twitterlinktool">
+    <p>
+      <label for="twittertext"><strong>text</strong></label> - tweet text; limit to 280 characters<!-- use <code>%20</code> in place of spaces--><br/>
+      <input type="text" name="twittertext" size="20" placeholder="Your message">
+    </p>
+    <p>
+      <label for="twitterurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/'--><br/>
+      <input type="text" name="twitterurl" size="20" placeholder="https://">
+    </p>
+    <p>
+      <label for="twitterhashtags"><strong>hashtags</strong></label> - optional hashtags; use a comma to separate<!-- use <code>%20</code> in place of spaces--><br/>
+      <input type="text" name="twitterhashtags" size="20" placeholder="first hashtag,second hashtag,etc">
+    </p>
+    <p><input type="button" class="button" value="Build Twitter link" onclick="buildTwitterLink(this.form)"></p>
+    <p><input type="text" id="twitterlink" value="https://twitter.com/intent/tweet?text=&url=&hashtags=" disabled></p>
+    <p><input type="button" class="button copy" value="Copy Twitter link" onclick="copyMyTextField('twitterlink')"></p>
+  </form>
 
   <h4>LinkedIn</h4>
+  <p>Example:</p>
   <code class="window">https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;title=Email%20Design%20System&amp;summary=Use%20a%20design%20system%20for%20your%20emails</code>
-  <ul>
-    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
-    <li><strong>title</strong> - article title/headline; use <code>%20</code> in place of spaces</li>
-    <li><strong>summary</strong> - short blurb; use <code>%20</code> in place of spaces</li>
+  <p>Build your own:</p>
+  <form id="twitterlinktool">
+    <p>
+      <label for="linkedinurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/'--><br/>
+      <input type="text" name="linkedinurl" size="20" placeholder="https://">
+    </p>
+    <p>
+      <label for="linkedintitle"><strong>title</strong></label> - article title/headline<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="linkedintitle" size="20" placeholder="Title/headline">
+    </p>
+    <p>
+      <label for="linkedinsummary"><strong>summary</strong></label> - short blurb<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="linkedinsummary" size="20" placeholder="Your message">
+    </p>
+    <p><input type="button" class="button" value="Build LinkedIn link" onclick="buildLinkedInLink(this.form)"></p>
+    <p><input type="text" id="linkedinlink" value="https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=" disabled></p>
+    <p><input type="button" class="button copy" value="Copy LinkedIn link" onclick="copyMyTextField('linkedinlink')"></p>
   </ul>
   <h4>Facebook</h4>
   <code class="window">https://www.facebook.com/sharer.php?s=100&amp;p[title]=Email%20Design%20System&amp;p[summary]=Use%20a%20design%20system%20for%20your%20emails&amp;p[images][0]=https%3A%2F%2Fblocksedit.com%2Fimg%2Fappicon.png&amp;p[url]=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
-  <ul>
-    <li><strong>title</strong> - article title/headline; use <code>%20</code> in place of spaces</li>
-    <li><strong>summary</strong> - short blurb; use <code>%20</code> in place of spaces</li>
-    <li><strong>image</strong> - preview image URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
-    <li><strong>url</strong> - website URL; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
-  </ul>
+  <form id="facebooklinktool">
+    <p>
+      <label for="facebooktitle"><strong>title</strong></label> - article title/headline<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="facebooktitle" size="20" placeholder="Title/headline">
+    </p>
+    <p>
+      <label for="facebooksummary"><strong>summary</strong></label> - short blurb<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="facebooksummary" size="20" placeholder="Your message">
+    </p>
+    <p>
+      <label for="facebookimage"><strong>image</strong></label> - optional preview image URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/' --><br/>
+      <input type="text" name="facebookimage" size="20" placeholder="https://">
+    </p>
+    <p>
+      <label for="facebookurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/' --><br/>
+      <input type="text" name="facebookurl" size="20" placeholder="https://">
+    </p>
+    <p><input type="button" class="button" value="Build Facebook link" onclick="buildFacebookLink(this.form)"></p>
+    <p><input type="text" id="facebooklink" value="https://www.facebook.com/sharer.php?s=100&p[title]=&p[summary]=&p[images][0]=&p[url]=" disabled></p>
+    <p><input type="button" class="button copy" value="Copy Facebook link" onclick="copyMyTextField('facebooklink')"></p>
+  </form>
   <h4>Email</h4>
   <code class="window">mailto:?subject=Email%20Design%20System&amp;body=Use%20a%20design%20system%20for%20your%20emails:%20https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
-  <ul>
-    <li><strong>subject</strong> - subject line; use <code>%20</code> in place of spaces</li>
-    <li><strong>body</strong> - short blurb; use <code>%20</code> in place of spaces</li>
-    <li>Include website URL at the end; use <code>%3A</code> for ':' and <code>%2F</code> for '/'</li>
-  </ul>
+  <form id="emaillinktool">
+    <p>
+      <label for="emailsubject"><strong>subject</strong></label> - subject line<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="emailsubject" size="20" placeholder="Subject line">
+    </p>
+    <p>
+      <label for="emailbody"><strong>body</strong></label> - short blurb; you can include a URL<!-- use <code>%20</code> in place of spaces --><br/>
+      <input type="text" name="emailbody" size="20" placeholder="Your message">
+    </p>
+    <p><input type="button" class="button" value="Build Email link" onclick="buildEmailLink(this.form)"></p>
+    <p><input type="text" id="emaillink" value="mailto:?subject=&body=" disabled></p>
+    <p><input type="button" class="button copy" value="Copy Email link" onclick="copyMyTextField('emaillink')"></p>
+  </form>
 
 </section>
 
@@ -869,6 +1009,7 @@
   <h3 id="changelog"><a href="#changelog" class="anchor">#</a>Changelog</h3>
   <article>
     <ul class="releases">
+      <li>6/16/2020: Adds link generators for UTM links, Twitter, LinkedIn, Facebook, and Email prefill</li>
       <li>5/6/2020: Initial version</li>
     </ul>
   </article>
