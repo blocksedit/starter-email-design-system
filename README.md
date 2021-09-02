@@ -9,8 +9,7 @@
 - Single-page HTML format with navigation
 - General tips for branding, writing, and using components
 - Example template components, code, and guidelines
-- Branding colors and fonts palette
-- UTM parameters cheatsheet
-- Share links cheatsheet
-- Special characters tool
+- Link tracking parameters formatting
+- Share links generator
+- Common special characters cheatsheet
 - Print/PDF styling

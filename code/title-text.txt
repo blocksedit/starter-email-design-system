@@ -1,1 +1,0 @@
-<div style="-block-edit: true; -block-component: true; font-family: 'Myriad Pro','PT Sans',Arial,Helvetica,sans-serif; font-size: 28px; line-height: 1; text-align: center; color: #ffffff;">Headline text</div>

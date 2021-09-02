@@ -193,7 +193,7 @@
       }
 
       table th, table td {
-        padding: 5px 10px;
+        padding: 8px 12px;
         border-bottom: 1px solid #ccc;
       }
 
@@ -355,7 +355,6 @@
         font-family: "Courier New", Courier, Helvetica, Arial, serif;
         font-weight: 300;
         line-height: 1.2em;
-        overflow-x: scroll;
       }
       code.window {
         display: block;
@@ -363,6 +362,7 @@
         width: 100%;
         padding: 14px 15px 11px 15px;
         white-space: nowrap;
+        overflow-x: scroll;
       }
 
       .layouts {
@@ -372,12 +372,17 @@
         display: inline-block;
         margin-right: 10px;
         margin-left: 0;
-        width: 275px;
+        width: 400px;
         vertical-align: top;
       }
       .layouts li img {
         width: 100%;
         height: auto;
+      }
+      @media (max-width: 1170px) {
+        .layouts li {
+          width: 100%;
+        }
       }
 
       .releases {
@@ -420,72 +425,6 @@
         }
       }
     </style>
-    <script>
-    /* Copy text from HTML element */
-    function copyMyText(elementId) {
-      var aux = document.createElement("input");
-      aux.setAttribute("value", document.getElementById(elementId).innerHTML);
-      document.body.appendChild(aux);
-      aux.select();
-      document.execCommand("copy");
-      document.body.removeChild(aux);
-    }
-
-    /* Copy text from text field */
-    function copyMyTextField(elementId) {
-      var copyTextField = document.getElementById(elementId);
-      copyTextField.select(); 
-      copyTextField.setSelectionRange(0, 99999); /* For mobile devices */
-      document.execCommand("copy");
-    }
-
-    /* UTM link generator */
-    function buildUtmLink(form) {
-      var utmurl = form.utmurl.value;
-      var utmsource = form.utmsource.value;
-      var utmmedium = form.utmmedium.value;
-      var utmcampaign = form.utmcampaign.value;
-      var utmcontent = form.utmcontent.value;
-
-      document.getElementById('utmlink').value = utmurl + '?utm_source=' + utmsource + '&utm_medium=' + utmmedium + '&utm_campaign=' + utmcampaign + '&utm_content=' + utmcontent;
-    }
-
-    /* Twitter link generator */
-    function buildTwitterLink(form) {
-      var twittertext = encodeURIComponent(form.twittertext.value);
-      var twitterurl = encodeURIComponent(form.twitterurl.value);
-      var twitterhashtags = encodeURIComponent(form.twitterhashtags.value);
-
-      document.getElementById('twitterlink').value = 'https://twitter.com/intent/tweet?text=' + twittertext + '&url=' + twitterurl + '&hashtags=' + twitterhashtags;
-    }
-
-    /* LinkedIn link generator */
-    function buildLinkedInLink(form) {
-      var linkedinurl = encodeURIComponent(form.linkedinurl.value);
-      var linkedintitle = encodeURIComponent(form.linkedintitle.value);
-      var linkedinsummary = encodeURIComponent(form.linkedinsummary.value);
-
-      document.getElementById('linkedinlink').value = 'https://www.linkedin.com/shareArticle?mini=true&url=' + linkedinurl + '&title=' + linkedintitle + '&summary=' + linkedinsummary;
-    }
-
-    /* Facebook link generator */
-    function buildFacebookLink(form) {
-      var facebooktitle = encodeURIComponent(form.facebooktitle.value);
-      var facebooksummary = encodeURIComponent(form.facebooksummary.value);
-      var facebookimage = encodeURIComponent(form.facebookimage.value);
-      var facebookurl = encodeURIComponent(form.facebookurl.value);
-
-      document.getElementById('facebooklink').value = 'https://www.facebook.com/sharer.php?s=100&p[title]=' + facebooktitle + '&p[summary]=' + facebooksummary + '&p[images][0]=' + facebookimage + '&p[url]=' + facebookurl;
-    }
-
-    /* Email link generator */
-    function buildEmailLink(form) {
-      var emailsubject = encodeURIComponent(form.emailsubject.value);
-      var emailbody = encodeURIComponent(form.emailbody.value);
-
-      document.getElementById('emaillink').value = 'mailto:?subject=' + emailsubject + '&body=' + emailbody;
-    }
-    </script>
   </head>
 
 <body>
@@ -505,41 +444,26 @@
     </ul>
   </li>
   <li>
-    <h4>Writing</h4>
-    <ul>
-      <li><a href="#mechanics">Mechanics</a></li>
-      <li><a href="#content">Content</a></li>
-      <li><a href="#utm-parameters">UTM parameters</a></li>
-      <li><a href="#share-links">Custom share links</a></li>
-    </ul>
-  </li>
-  <li>
     <h4>Template</h4>
     <ul>
-      <li><a href="#layouts">Layouts</a></li>
-      <li><a href="#header-footer">Header, footer</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#blocks-edit">Blocks Edit</a></li>
     </ul>
   </li>
   <li>
-    <h4>Sections</h4>
+    <h4>Content</h4>
     <ul>
-      <li><a href="#featured">Featured</a></li>
-      <li><a href="#two-columns">Two columns</a></li>
-      <li><a href="#three-columns">Three columns</a></li>
-      <li><a href="#rows">Rows</a></li>
-    </ul>
-  </li>
-  <li>
-    <h4>Components</h4>
-    <ul>
-      <li><a href="#titles">Titles</a></li>
-      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#meta">Meta</a></li>
+      <li><a href="#copy">Copy</a></li>
+      <li><a href="#link-tracking">Link tracking</a></li>
+      <li><a href="#alt-text">Alt text</a></li>
+      <li><a href="#animated-gifs">Animated GIFs</a></li>
+      <li><a href="#special-characters">Special characters</a></li>
     </ul>
   </li>
   <li>
     <h4>Other</h4>
     <ul>
-      <li><a href="#special-characters">Special characters</a></li>
       <li><a href="#changelog">Changelog</a></li>
     </ul>
   </li>
@@ -554,14 +478,9 @@
   <h4>Color palette</h4>
   <ul class="colors">
     <li>
-      <p class="color" style="background-color: #000000;">&nbsp;</p>
+      <p class="color" style="background-color: #333333;">&nbsp;</p>
       <p>Black</p>
-      <p><code>#000000</code></p>
-    </li>
-    <li>
-      <p class="color" style="background-color: #414141;">&nbsp;</p>
-      <p>Dark grey</p>
-      <p><code>#414141</code></p>
+      <p><code>#333333</code></p>
     </li>
     <li>
       <p class="color" style="background-color: #eeeeee;">&nbsp;</p>
@@ -571,31 +490,23 @@
   </ul>
   <ul class="guidelines">
     <li>ℹ️ Black is used for text</li>
-    <li>ℹ️ Dark grey is used for buttons or navigation</li>
     <li>ℹ️ Light grey is used as a background highlight</li>
   </ul>
 
   <h4>Fonts</h4>
   <ul class="fonts">
     <li>
-      <p class="font" style="font-family: 'Helvetica Neue'; font-weight: 600;">Helvetica Neue, 600 weight</p>
-      <p><code>font-family:'Helvetica Neue','Arial',sans-serif; font-weight: 600;</code></p>
+      <p class="font" style="font-family: Georgia, Times New Roman, serif; font-weight: 400">Georgia, 400 weight</p>
+      <p><code>font-family: Georgia, Times New Roman, serif; font-weight: 400;</code></p>
       <ul class="guidelines">
-        <li>ℹ️ For titles, buttons</li>
+        <li>ℹ️ For titles</li>
       </ul>
     </li>
     <li>
-      <p class="font" style="font-family: 'Helvetica Neue'; font-weight: 300;">Helvetica Neue, 300 weight</p>
-      <p><code>font-family:'Helvetica Neue','Arial',sans-serif; font-weight: 300;</code></p>
+      <p class="font" style="font-family: Helvetica Neue, Arial,sans-serif; font-weight: 300">Helvetica Neue, 300 weight</p>
+      <p><code>font-family: Helvetica Neue, Arial,sans-serif; font-weight: 300</code></p>
       <ul class="guidelines">
         <li>ℹ️ For text</li>
-      </ul>
-    </li>
-    <li>
-      <p class="font" style="font-family: 'Arial';">Arial</p>
-      <p><code>font-family:'Helvetica Neue','Arial',sans-serif;</code></p>
-      <ul class="guidelines">
-        <li>ℹ️ Fallback font</li>
       </ul>
     </li>
   </ul>
@@ -625,17 +536,86 @@
 </section>
 
 <section>
-  <h2>Writing</h2>
+  <h2>Template</h2>
 
-  <h3 id="mechanics"><a href="#mechanics" class="anchor">#</a>Mechanics</h3>
-  <ul class="guidelines">
-    <li>ℹ️ <strong>Subject Line</strong> - the first impression of what the message is about, enticing the reader to open the message</li>
-    <li>ℹ️ <strong>Preheader</strong> - short summary text following the subject line when viewing an email in an inbox</li>
-    <li>❌ Avoid all caps and punctuation in subject lines, except for dashes and colons</li>
-    <li>✅ Keep the preheader text short and simple; use to tell readers what the email is about, why it’s relevant, and to support your subject line</li>
+  <h3 id="examples"><a href="#examples" class="anchor">#</a>Examples</h3>
+  <p>Examples of using the template for different email types.</p>
+
+  <ul class="layouts">
+    <li>
+      <h4>Basic</h4>
+      <p><img src="img/basic-layout.png" width="275" class="screenshot" /></p>
+    </li>
+    <li>
+      <h4>Welcome</h4>
+      <p><img src="img/welcome-layout.png" width="275" class="screenshot" /></p>
+    </li>
+    <li>
+      <h4>Marketing</h4>
+      <p><img src="img/marketing-layout.png" width="275" class="screenshot" /></p>
+    </li>
+    <li>
+      <h4>Newsletter</h4>
+      <p><img src="img/newsletter-layout.png" width="275" class="screenshot" /></p>
+    </li>
   </ul>
 
-  <h3 id="content"><a href="#content" class="anchor">#</a>Content</h3>
+  <h3 id="blocks-edit"><a href="#blocks-edit" class="anchor">#</a>Blocks Edit</h3>
+  <p>Using Blocks Edit to build emails from the template. Salesforce Marketing Cloud is used for exporting.</p>
+
+  <h4>Dashboard</h4>
+  <ul>
+    <li>To sign in or sign up you can go to <a href="https://blocksedit.com" target="_blank">blocksedit.com</a>, or directly at <a href="https://app.blocksedit.com" target="_blank">app.blocksedit.com</a>.</li>
+    <li>Your account will include your own organization by default. You will find other organizations you're part of as tabs at the top.</li>
+    <li>The organization dashboard shows templates that you have access to and all the emails created from each.</li>
+    <li>You will also see other team members that are on a template. You can invite team members to edit emails for a particular template by clicking <strong>Invite/remove editors</strong> in the template header.</li>
+    <li>Emails are shown in descending order based on the last edit date and time. You can see the time stamp next to the email along with who made the update.</li>
+    <li>To add a new, blank email, click the <strong>New Email</strong> button in the template header. Next to it is an icon to add a folder to help keep emails organized. To edit a current email, click on the email/campaign name.</li>
+  </ul>
+  <h4>Editor</h4>
+  <ul>
+    <li>Starting a new email or clicking to edit a current one brings up a preview of the email. Here you can view the current state of the email and test out its links.</li>
+    <li>Next to the <strong>Edit</strong> button in the top bar, there is a <strong>Share</strong> option to send a preview of the email. And an <strong>Export</strong> option to save out the final version to Salesforce Marketing Cloud.</li>
+    <li>To make changes, click the <strong>Edit</strong>. The button turns into a <strong>Save</strong> button for saving changes.</li>
+    <li>On the left sidebar you can view your email in mobile view, access components to use, saved template layouts, and email settings.</li>
+    <li><strong>Components</strong> can be dragged and dropped to add stackable sections for content as well as individual elements that might be available, like a button.</li>
+    <li><strong>Layouts</strong> are for reusing certain email designs, acting as sub-templates that you can start an email with.</li>
+    <li><strong>Email settings</strong> allow you to set a subject line and preview text for the email.</li>
+    <li>Once there are components in an email, to make content updates, just mouse over and click on content areas. Text can be edited inline with additional options shown when clicked on. And clicking on a placeholder image brings up its options, including the option to upload a new one in its place.</li>
+  </ul>
+  <h4>Exporting</h4>
+  <ul>
+    <li>Once your email is ready to go, if you haven't already done so, click <strong>Save</strong> to save your final updates. Then click <strong>Export</strong> for the process to getting your email ready to send in Salesforce Marketing Cloud.</li>
+    <li>You will first have the option to transfer any new images you added. Click the <strong>Set image URLs from source</strong> option and <strong>Browse</strong> for the SFMC folder to save your images to. And click <strong>Export Images</strong>.</li>
+    <li>You then have the option for exporting the email's code. Click <strong>Browse</strong> to choose where it gets saved on SFMC and then <strong>Transfer</strong>. Your email is added as a campaign in SFMC with correct image URLs, subject line, and preview text.</li>
+    <li>If you make any further updates, repeat the export process for updates to be made on SFMC.</li>
+  </ul>
+  <p>For additional help, click the <strong>?</strong> in the upper right, next to your profile for <a href="https://blocksedit.com/help/" target="_blank">Blocks Edit's help docs</a>.</p>
+
+  <h4>Additional tips</h4>
+  <article>
+    <ul class="guidelines">
+      <li>ℹ️ You don't need to scale images to exact dimensions, they are scaled automatically</li>
+      <li>ℹ️ Images will bring up a cropping option; Skip button allows automatically adjusting the image's height</li>
+      <li>ℹ️ Blue bars indicate Salesforce Marketing Cloud AMPscript code</li>
+      <li>ℹ️ Tokens (ex: %%emailaddr%%) are dynamically updated in Salesforce Marketing Cloud</li>
+    </ul>
+  </article>
+
+</section>
+
+<section>
+  <h2>Writing</h2>
+
+  <h3 id="meta"><a href="#meta" class="anchor">#</a>Meta</h3>
+  <ul class="guidelines">
+    <li>ℹ️ <strong>Subject Line</strong> - the first impression of what the message is about, enticing the reader to open the message</li>
+    <li>ℹ️ <strong>Preview text</strong> - short summary following the subject line when viewing an email in an inbox</li>
+    <li>❌ Avoid all caps and punctuation in subject lines, except for dashes and colons</li>
+    <li>✅ Keep the preview text short and simple; use to tell readers what the email is about, why it’s relevant, and to support your subject line</li>
+  </ul>
+
+  <h3 id="copy"><a href="#copy" class="anchor">#</a>Copy</h3>
   <ul class="guidelines">
     <li>✅ Keep the length of the email short, concise, about one page maximum in length. Newsletters may be longer, but use links to share further details.</li>
     <li>✅ Use bullet points to identify key points in the message and repeat the main message throughout the campaign</li>
@@ -644,371 +624,86 @@
     <li>✅ Build contextual content around your CTA</li>
   </ul>
 
-  <h3 id="utm-parameters"><a href="#utm-parameters" class="anchor">#</a>UTM parameters</h3>
-  <p>All links should be tagged using the appropriate UTM parameters, including linked images. Here's an example:</p>
-  <code class="window">https://blocksedit.com/starter-email-design-system/?utm_source=email-newsletter&amp;utm_medium=email&amp;utm_campaign=04-2020&amp;utm_content=logo</code>
-  <p>Build your own:</p>
-  <form id="utmtool">
-    <p>
-      <label for="utmurl"><strong>Website URL</strong></label><br/>
-      <input type="text" name="utmurl" size="20" placeholder="https://">
-    </p>
-    <p>
-      <label for="utmsource"><strong>utm_source</strong></label> - referrer; all lowercase with hyphens, no spaces<br/>
-      <input type="text" name="utmsource" size="20" placeholder="source-title">
-    </p>
-    <p>
-      <label for="utmmedium"><strong>utm_medium</strong></label> - marketing campaign type, always "email" in this case; all lowercase with hyphens, no spaces<br/>
-      <input type="text" name="utmmedium" size="20" value="email" placeholder="medium-name">
-    </p>
-    <p>
-      <label for="utmcampaign"><strong>utm_campaign</strong></label> - name for current email campaign; all lowercase with hyphens, no spaces<br/>
-      <input type="text" name="utmcampaign" size="20" placeholder="campaign-name">
-    </p>
-    <p>
-      <label for="utmcontent"><strong>utm_content</strong></label> - content piece it came from, optional; all lowercase with hyphens, no spaces<br/>
-      <input type="text" name="utmcontent" size="20" placeholder="content-type">
-    </p>
-  <!--
-    <p>utm_term - keyword, optional</p>
-  -->
-    <p><input type="button" class="button" value="Build UTM link" onclick="buildUtmLink(this.form)"></p>
-    <p><input type="text" id="utmlink" value="?utm_source=&amp;utm_medium=email&amp;utm_campaign=&amp;utm_content=" disabled></p>
-    <p><input type="button" class="button copy" value="Copy UTM link" onclick="copyMyTextField('utmlink')"></p>
-  </form>
-
-  <h3 id="share-links"><a href="#share-links" class="anchor">#</a>Custom share links</h3>
-  <p>Be sure to test all links by copying and pasting them in your browser.</p>
-
-  <h4>Twitter</h4>
-  <p>Example:</p>
-  <code class="window">https://twitter.com/intent/tweet?text=Use%20a%20design%20system%20for%20your%20emails&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;hashtags=emailgeeks,email%20design</code>
-  <p>Build your own:</p>
-  <form id="twitterlinktool">
-    <p>
-      <label for="twittertext"><strong>text</strong></label> - tweet text; limit to 280 characters<!-- use <code>%20</code> in place of spaces--><br/>
-      <input type="text" name="twittertext" size="20" placeholder="Your message">
-    </p>
-    <p>
-      <label for="twitterurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/'--><br/>
-      <input type="text" name="twitterurl" size="20" placeholder="https://">
-    </p>
-    <p>
-      <label for="twitterhashtags"><strong>hashtags</strong></label> - optional hashtags; use a comma to separate<!-- use <code>%20</code> in place of spaces--><br/>
-      <input type="text" name="twitterhashtags" size="20" placeholder="first hashtag,second hashtag,etc">
-    </p>
-    <p><input type="button" class="button" value="Build Twitter link" onclick="buildTwitterLink(this.form)"></p>
-    <p><input type="text" id="twitterlink" value="https://twitter.com/intent/tweet?text=&url=&hashtags=" disabled></p>
-    <p><input type="button" class="button copy" value="Copy Twitter link" onclick="copyMyTextField('twitterlink')"></p>
-  </form>
-
-  <h4>LinkedIn</h4>
-  <p>Example:</p>
-  <code class="window">https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F&amp;title=Email%20Design%20System&amp;summary=Use%20a%20design%20system%20for%20your%20emails</code>
-  <p>Build your own:</p>
-  <form id="twitterlinktool">
-    <p>
-      <label for="linkedinurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/'--><br/>
-      <input type="text" name="linkedinurl" size="20" placeholder="https://">
-    </p>
-    <p>
-      <label for="linkedintitle"><strong>title</strong></label> - article title/headline<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="linkedintitle" size="20" placeholder="Title/headline">
-    </p>
-    <p>
-      <label for="linkedinsummary"><strong>summary</strong></label> - short blurb<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="linkedinsummary" size="20" placeholder="Your message">
-    </p>
-    <p><input type="button" class="button" value="Build LinkedIn link" onclick="buildLinkedInLink(this.form)"></p>
-    <p><input type="text" id="linkedinlink" value="https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=" disabled></p>
-    <p><input type="button" class="button copy" value="Copy LinkedIn link" onclick="copyMyTextField('linkedinlink')"></p>
+  <h3 id="link-tracking"><a href="#link-tracking" class="anchor">#</a>Link tracking</h3>
+  <p>All links should be tagged using the standard UTM parameters, including linked images. Here's an example:</p>
+  <p><code class="window">https://blocksedit.com/email-design-system/?utm_medium=email&amp;utm_campaign=newsletter-july-2021&amp;utm_content=feature-banner</code></p>
+  <p>And here's how it breaks down:</p>
+  <ul>
+    <li><strong>Website URL</strong></li>
+    <li><strong>utm_medium</strong> - marketing channel; in this case always "email"</li>
+    <li><strong>utm_campaign</strong> - name for current email campaign</li>
+    <li><strong>utm_content</strong> - content piece link came from; optional</li>
   </ul>
-  <h4>Facebook</h4>
-  <code class="window">https://www.facebook.com/sharer.php?s=100&amp;p[title]=Email%20Design%20System&amp;p[summary]=Use%20a%20design%20system%20for%20your%20emails&amp;p[images][0]=https%3A%2F%2Fblocksedit.com%2Fimg%2Fappicon.png&amp;p[url]=https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
-  <form id="facebooklinktool">
-    <p>
-      <label for="facebooktitle"><strong>title</strong></label> - article title/headline<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="facebooktitle" size="20" placeholder="Title/headline">
-    </p>
-    <p>
-      <label for="facebooksummary"><strong>summary</strong></label> - short blurb<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="facebooksummary" size="20" placeholder="Your message">
-    </p>
-    <p>
-      <label for="facebookimage"><strong>image</strong></label> - optional preview image URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/' --><br/>
-      <input type="text" name="facebookimage" size="20" placeholder="https://">
-    </p>
-    <p>
-      <label for="facebookurl"><strong>url</strong></label> - website URL<!-- use <code>%3A</code> for ':' and <code>%2F</code> for '/' --><br/>
-      <input type="text" name="facebookurl" size="20" placeholder="https://">
-    </p>
-    <p><input type="button" class="button" value="Build Facebook link" onclick="buildFacebookLink(this.form)"></p>
-    <p><input type="text" id="facebooklink" value="https://www.facebook.com/sharer.php?s=100&p[title]=&p[summary]=&p[images][0]=&p[url]=" disabled></p>
-    <p><input type="button" class="button copy" value="Copy Facebook link" onclick="copyMyTextField('facebooklink')"></p>
-  </form>
-  <h4>Email</h4>
-  <code class="window">mailto:?subject=Email%20Design%20System&amp;body=Use%20a%20design%20system%20for%20your%20emails:%20https%3A%2F%2Fblocksedit.com%2Femail-design-system%2F</code>
-  <form id="emaillinktool">
-    <p>
-      <label for="emailsubject"><strong>subject</strong></label> - subject line<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="emailsubject" size="20" placeholder="Subject line">
-    </p>
-    <p>
-      <label for="emailbody"><strong>body</strong></label> - short blurb; you can include a URL<!-- use <code>%20</code> in place of spaces --><br/>
-      <input type="text" name="emailbody" size="20" placeholder="Your message">
-    </p>
-    <p><input type="button" class="button" value="Build Email link" onclick="buildEmailLink(this.form)"></p>
-    <p><input type="text" id="emaillink" value="mailto:?subject=&body=" disabled></p>
-    <p><input type="button" class="button copy" value="Copy Email link" onclick="copyMyTextField('emaillink')"></p>
-  </form>
+  <p>When building your links, make sure everything is in lowercase with hyphens instead of spaces.</p>
 
-</section>
-
-<section>
-  <h2>Template</h2>
-
-  <h3 id="layouts"><a href="#layouts" class="anchor">#</a>Layouts</h3>
-  <p>Examples of template layouts to use as a starting point.</p>
-
-  <ul class="layouts">
-    <li>
-      <h4>Basic</h4>
-      <p><img src="img/basic-layout.png" width="275" class="screenshot" /></p>
-      <p><a href="code/basic.html" target="_blank" class="button">Get Code</a></p>
-    </li>
-    <li>
-      <h4>Welcome</h4>
-      <p><img src="img/welcome-layout.png" width="275" class="screenshot" /></p>
-      <p><a href="code/welcome.html" target="_blank" class="button">Get Code</a></p>
-    </li>
-    <li>
-      <h4>Hero</h4>
-      <p><img src="img/hero-layout.png" width="275" class="screenshot" /></p>
-      <p><a href="code/hero.html" target="_blank" class="button">Get Code</a></p>
-    </li>
-    <li>
-      <h4>Marketing</h4>
-      <p><img src="img/marketing-layout.png" width="275" class="screenshot" /></p>
-      <p><a href="code/marketing.html" target="_blank" class="button">Get Code</a></p>
-    </li>
-    <li>
-      <h4>Newsletter</h4>
-      <p><img src="img/newsletter-layout.png" width="275" class="screenshot" /></p>
-      <p><a href="code/newsletter.html" target="_blank" class="button">Get Code</a></p>
-    </li>
+  <h3 id="alt-text"><a href="#alt-text" class="anchor">#</a>Alt text</h3>
+  <p>Images should include alt text for accessibility.</p>
+  <ul class="guidelines">
+    <li>ℹ️ Text is visible when mousing over image</li>
+    <li>ℹ️ If an email client doesn't load images, the alt text is shown in their place</li>
+    <li>ℹ️ Any text within an image should be used in the alt text</li>
+    <li>ℹ️ Photos should be briefly described</li>
   </ul>
 
-  <h3 id="header-footer"><a href="#header-footer" class="anchor">#</a>Header, footer</h3>
-
-  <article>
-    <h4>Header</h4>
-    <p><img src="img/section-header.png" width="620" class="screenshot" /></p>
-    <p><a href="code/header.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Replace the image with a logo</li>
-      <li>✅ Include a title/tagline</li>
-      <li>❌ Don't make title text too long (no more than a couple of lines)</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Navigation</h4>
-    <p><img src="img/section-navigation.png" width="620" class="screenshot" /></p>
-    <p><a href="code/navigation.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>❌ No more than 5 items</li>
-      <li>✅ Keep titles short, 1-2 words</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Footer</h4>
-    <p><img src="img/section-footer.png" width="620" class="screenshot" /></p>
-    <p><a href="code/footer.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>ℹ️ Unsubscribe link doesn't need to change</li>
-      <li>ℹ️ Email address is processed when email is sent out</li>
-    </ul>
-  </article>
-</section>
-
-<section>
-  <h2>Sections</h2>
-
-  <h3 id="featured"><a href="#featured" class="anchor">#</a>Featured</h3>
-
-  <article>
-    <h4>Banner</h4>
-    <p><img src="img/section-banner.png" width="620" class="screenshot" /></p>
-    <p><a href="code/banner.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>ℹ️ Image width: 1200 pixels</li>
-      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Hero</h4>
-    <p><img src="img/section-hero.png" width="620" class="screenshot" /></p>
-    <p><a href="code/hero.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Call-to-action button is optional</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Intro</h4>
-    <p><img src="img/section-intro.png" width="620" class="screenshot" /></p>
-    <p><a href="code/intro.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Headline and call-to-action button are optional</li>
-    </ul>
-  </article>
-
-  <h3 id="two-columns"><a href="#two-columns" class="anchor">#</a>Two columns</h3>
-
-  <article>
-    <h4>Image left</h4>
-    <p><img src="img/section-image-left.png" width="620" class="screenshot" /></p>
-    <p><a href="code/image-left.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Headline and call-to-action button are optional</li>
-      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
-      <li>ℹ️ Image width: 600px</li>
-      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Image right</h4>
-    <p><img src="img/section-image-right.png" width="620" class="screenshot" /></p>
-    <p><a href="code/image-right.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Headline and call-to-action button are optional</li>
-      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
-      <li>ℹ️ Image width: 600px</li>
-      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
-    </ul>
-  </article>
-  <article>
-    <h4>Two-column</h4>
-    <p><img src="img/section-two-col.png" width="620" class="screenshot" /></p>
-    <p><a href="code/two-column.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Images, headlines, and call-to-action buttons are optional</li>
-      <li>✅ Even number of items recommended when possible</li>
-      <li>❌ Don't make text too long, try to keep it to 4-5 lines</li>
-      <li>ℹ️ Images Width: 600px</li>
-      <li>ℹ️ Images Height: Flexible (auto adjusts layout)</li>
-    </ul>
-  </article>
-
-  <h3 id="three-columns"><a href="#three-columns" class="anchor">#</a>Three columns</h3>
-
-  <article>
-    <h4>Three-column</h4>
-    <p><img src="img/section-three-col.png" width="620" class="screenshot" /></p>
-    <p><a href="code/three-column.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>✅ Images, headlines, and call-to-action links are optional</li>
-      <li>❌ Don't make text too long, try to keep it to three lines</li>
-      <li>ℹ️ Images Width: 400px</li>
-      <li>ℹ️ Images Height: Flexible (auto adjusts layout)</li>
-    </ul>
-  </article>
-
-  <h3 id="rows"><a href="#rows" class="anchor">#</a>Rows</h3>
-
-  <article>
-    <h4>Row</h4>
-    <p><img src="img/section-row.png" width="620" class="screenshot" /></p>
-    <p><a href="code/row.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>❌ Don't make text too long, try to keep it to 2-3 lines</li>
-      <li>ℹ️ Image width: 400px</li>
-      <li>ℹ️ Image height: Flexible (auto adjusts layout)</li>
-    </li>
-  </article>
-</section>
-
-<section>
-  <h2>Components</h2>
-
-  <h3 id="titles"><a href="#titles" class="anchor">#</a>Titles</h3>
-
-  <article>
-    <h4>Title text</h4>
-    <p><img src="img/component-title.png" height="50" class="screenshot" /></p>
-    <p><a href="code/title-text.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>ℹ️ Can be added above text areas</li>
-    </li>
-  </article>
-
-  <h3 id="buttons"><a href="#buttons" class="anchor">#</a>Buttons</h3>
-
-  <article>
-    <h4>Call to action button</h4>
-    <p><img src="img/component-button.png" height="50" class="screenshot" /></p>
-    <p><a href="code/call-to-action-button.txt" target="_blank" class="button">Get Code</a></p>
-    <ul class="guidelines">
-      <li>ℹ️ Can be added below text areas</li>
-    </li>
-  </article>
-</section>
-
-<section>
-  <h2>Other</h2>
+  <h3 id="animated-gifs"><a href="#animated-gifs" class="anchor">#</a>Animated GIFs</h3>
+  <ul class="guidelines">
+    <li>ℹ️ Try to keep under 500kb</li>
+    <li>ℹ️ The best way to cut down on file size is to reduce the number of frames/frame rate</li>
+    <li>ℹ️ For video previews, include play button in image</li>
+  </ul>
 
   <div class="hide-print">
     <h3 id="special-characters"><a href="#special-characters" class="anchor">#</a>Special characters</h3>
     <article>
-      <p>Click "Copy" to copy to your clipboard. Then paste in your email.</p>
+      <p>Select a character you need and copy it to your clipboard. Then paste in your email.</p>
       <table>
         <tbody>
           <tr>
             <td id="bullet-point">•</td>
             <td>Bullet point</td>
-            <td><button class="button copy" onclick="copyMyText('bullet-point')">Copy</button></td>
           </tr>
           <tr>
             <td id="left-quote">“</td>
             <td>Left curly quote marks</td>
-            <td><button class="button copy" onclick="copyMyText('left-quote')">Copy</button></td>
           </tr>
           <tr>
             <td id="right-quote">”</td>
             <td>Right curly quote marks</td>
-            <td><button class="button copy" onclick="copyMyText('right-quote')">Copy</button></td>
           </tr>
           <tr>
             <td id="en-dash">–</td>
             <td>En Dash</td>
-            <td><button class="button copy" onclick="copyMyText('en-dash')">Copy</button></td>
           </tr>
           <tr>
             <td id="em-dash">—</td>
             <td>Em Dash</td>
-            <td><button class="button copy" onclick="copyMyText('em-dash')">Copy</button></td>
           </tr>
           <tr>
             <td id="copyright">©</td>
             <td>Copyright symbol</td>
-            <td><button class="button copy" onclick="copyMyText('copyright')">Copy</button></td>
           </tr>
           <tr>
             <td id="registered">®</td>
             <td>Registered symbol</td>
-            <td><button class="button copy" onclick="copyMyText('registered')">Copy</button></td>
           </tr>
           <tr>
             <td id="trademark">™</td>
             <td>Trademark</td>
-            <td><button class="button copy" onclick="copyMyText('trademark')">Copy</button></td>
           </tr>
         </tbody>
       </table>
     </article>
   </div>
 
+</section>
+
+<section>
+  <h2>Other</h2>
+
   <h3 id="changelog"><a href="#changelog" class="anchor">#</a>Changelog</h3>
   <article>
     <ul class="releases">
+      <li>9/1/2021: Cleans up functionality and examples</li>
       <li>6/16/2020: Adds link generators for UTM links, Twitter, LinkedIn, Facebook, and Email prefill</li>
       <li>5/6/2020: Initial version</li>
     </ul>

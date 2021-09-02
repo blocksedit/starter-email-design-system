@@ -1,1 +1,0 @@
-<a href="#" style="-block-edit: true; -block-component: true; background: #414141; color: #ffffff; font-family: 'Myriad Pro','PT Sans',Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 700; line-height: 120%; Margin: 0; text-decoration: none; text-transform: none;"target="_blank">Call to Action</a>
