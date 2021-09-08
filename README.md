@@ -6,10 +6,11 @@
 <img src="starter-design-system-thumbnail.png" />
 
 ## Features ##
-- Single-page HTML format with navigation
-- General tips for branding, writing, and using components
-- Example template components, code, and guidelines
+- Single-page HTML format with sidebar navigation
+- General tips for branding, components, and content
+- Example template and guidelines
 - Link tracking parameters formatting
-- Share links generator
 - Common special characters cheatsheet
+- Content checklist
 - Print/PDF styling
+- Editable in Blocks Edit
