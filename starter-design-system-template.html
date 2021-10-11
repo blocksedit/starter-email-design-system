@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en">
+    <title>Starter Email Design System</title>
+    <meta name="description" content="Email design system template." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/
+         v2.0 | 20110126
+         License: none (public domain)
+      */
+
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed,
+      figure, figcaption, footer, header, hgroup,
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure,
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+
+      body {
+        line-height: 1;
+      }
+
+      ol, ul {
+        list-style: none;
+      }
+
+      blockquote, q {
+        quotes: none;
+      }
+
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Global */
+
+      body {
+        padding: 50px 40px 50px 300px;
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.3em;
+        color: #222;
+      }
+      @media (max-width: 960px) {
+        body {
+          padding: 30px 30px 30px 250px;
+          font-size: 16px;
+        }
+      }
+      @media (max-width: 800px) {
+        body {
+          padding: 20px;
+        }
+      }
+
+      /* Text formatting */
+
+      strong {
+        font-weight: 600;
+      }
+      em {
+        font-style: italic;
+      }
+
+      a {
+        color: #222;
+      }
+
+      h1, h2, h3, h4, h5 {
+        line-height: 1.1em;
+      }
+      h1 {
+        margin-bottom: 20px;
+        font-size: 40px;
+        font-weight: 600;
+      }
+      h2 {
+        margin-bottom: 20px;
+        font-size: 32px;
+        font-weight: 600;
+      }
+      h3 {
+        margin-top: 70px;
+        margin-bottom: 30px;
+        border-bottom: #222 2px solid;
+        padding-bottom: 10px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      h4 {
+        margin-top: 70px;
+        margin-bottom: 10px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      @media (max-width: 960px) {
+        h1 {
+          font-size: 36px;
+        }
+        h2 {
+          font-size: 30px;
+        }
+        h3 {
+          font-size: 22px;
+        }
+        h4 {
+          font-size: 18px;
+        }
+      }
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 22px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        margin-bottom: 15px;
+        line-height: 1.3em;
+      }
+      p.intro {
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+
+      form input[type='text'] {
+        border: #ccc 1px solid;
+        border-radius: 2px;
+        width: 100%;
+        padding: 4px 8px;
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+      }
+      form input[type='text']:disabled {
+        background-color: #eee;
+      }
+
+      .button {
+        display: inline-block;
+        margin: 0;
+        background-color: #ddd;
+        border: 0;
+        border-radius: 5px;
+        padding: 6px 14px;
+        text-decoration: none;
+        font-size: inherit;
+        font-weight: 400;
+        vertical-align: baseline;
+      }
+      .button:hover {
+        cursor: pointer;
+      }
+
+      table th, table td {
+        padding: 8px 12px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      h3 .anchor {
+        display: inline-block;
+        margin-left: -20px;
+        width: 20px;
+        text-decoration: none;
+        font-weight: 300;
+        color: #666;
+      }
+
+      .highlight {
+        color: #ff0000;
+      }
+
+      /* Index navigation */
+
+      .index {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #eee;
+        width: 260px;
+        height: 100%;
+        padding: 30px;
+        padding-top: 60px;
+        overflow-y: auto;
+        font-size: 16px;
+      }
+      .index h4 {
+        margin-top: 0;
+        font-size: 16px;
+      }
+      .index ul {
+        margin-bottom: 20px;
+        margin-left: 18px;
+        list-style: square;
+      }
+      .index li {
+        margin-bottom: 5px;
+      }
+      @media (max-width: 960px) {
+        .index {
+          width: 220px;
+          padding: 30px 20px;
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 800px) {
+        .index {
+          position: relative;
+          width: 100%;
+          columns: 2;
+        }
+      }
+      @media (max-width: 600px) {
+        .index {
+          columns: 1;
+        }
+      }
+
+      /* Sections */
+
+      section {
+        display: inline-block;
+        width: 880px;
+        padding: 30px 0;
+      }
+
+      section ul {
+        margin-bottom: 20px;
+        list-style: disc;
+      }
+      section ul li {
+        margin-bottom: 10px;
+        margin-left: 20px;
+      }
+
+      section .sections {
+        list-style: none;
+      }
+
+      section .sections li {
+        margin-bottom: 20px;
+        margin-left: 0;
+      }
+
+      section .screenshot {
+        border: #ccc 1px solid;
+      }
+      @media (max-width: 1280px) {
+        section {
+          width: 100%;
+        }
+        section .screenshot {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      section .guidelines {
+        list-style: none;
+      }
+      section .guidelines li {
+        margin-left: 0;
+      }
+
+      /* Misc */
+
+      .colors {
+        margin-bottom: 0;
+        list-style: none;
+      }
+      .colors li {
+        display: inline-block;
+        margin-left: 0;
+        width: 200px;
+      }
+      .colors li p {
+        margin-bottom: 5px;
+        line-height: 1.1em;
+      }
+      .colors li .color {
+        float: left;
+        margin-right: 10px;
+        border: #ddd 1px solid;
+        border-radius: 2px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .fonts {
+        list-style: none;
+      }
+      .fonts li {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 0;
+      }
+      .fonts li .font {
+        display: inline-block;
+        border: #ddd 1px solid;
+        border-radius: 2px;
+        padding: 10px 20px;
+        font-size: 30px;
+        vertical-align: bottom;
+      }
+
+      .visuals img {
+        margin-right: 10px;
+      }
+
+      code {
+        display: inline-block;
+        max-width: 100%;
+        border-radius: 2px;
+        background-color: #eee;
+        padding: 2px 6px 0 6px;
+        font-family: "Courier New", Courier, Helvetica, Arial, serif;
+        font-weight: 300;
+        line-height: 1.2em;
+      }
+      code.window {
+        display: block;
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 14px 15px 11px 15px;
+        white-space: nowrap;
+        overflow-x: scroll;
+      }
+
+      .two-column {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        width: 400px;
+        vertical-align: top;
+      }
+      .two-column img {
+        width: 100%;
+        height: auto;
+      }
+      @media (max-width: 1170px) {
+        .two-column {
+          width: 100%;
+        }
+      }
+
+      .releases {
+        font-size: 16px;
+      }
+      .releases li {
+        margin-bottom: 3px;
+      }
+
+      .credits {
+        margin-top: 30px;
+        background-color: #eee;
+        padding: 20px;
+        font-size: 16px;
+      }
+      .credits p {
+        margin-bottom: 0;
+      }
+
+      /* Print properties */
+
+      @media print {
+        body {
+          margin: 50px;
+          padding: 0;
+        }
+        .hide-print {
+          display: none;
+        }
+        section {
+          display: block;
+          page-break-after: always;
+        }
+        article, h3, h4, ul, ol, blockquote, table, img.screenshot {
+          page-break-inside: avoid;
+        }
+        img.screenshot {
+          width: 75%;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+
+<body>
+
+<section style="padding-top: 0;">
+  <h1 class="block-edit">Starter Email Design System</h1>
+  <p class="intro block-edit block-remove">Documentation, tools, and resources to help create consistency for branded emails. The <a href="https://blocksedit.com/starter-email-template/" target="_blank">Starter Email Template</a> is used as an example reference template.</p>
+</section>
+
+<div class="index hide-print">
+  <div class="block-region block-repeat">
+    <h4 class="block-edit">Section title</h4>
+    <ul>
+      <li class="block-edit"><a href="#anchorlink">Subitem anchor link</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="block-section">
+  <h2 class="block-edit">Section title</h2>
+
+  <h3 id="anchorlink" class="block-component block-anchor"><a href="#anchorlink" class="anchor block-edit block-no-text">#</a><span class="block-edit">Subitem title</span></h3>
+
+  <h4 class="block-edit block-component">Subtitle</h4>
+  <ul class="colors block-component">
+    <li class="block-region block-repeat">
+      <p class="color block-bgcolor" style="background-color: #333333;">&nbsp;</p>
+      <p class="block-edit">Black</p>
+      <p><code class="block-edit">#333333</code></p>
+    </li>
+  </ul>
+  <ul class="block-component">
+    <li class="block-region block-repeat block-edit">Bullet point</li>
+  </ul>
+  <ul class="guidelines block-component">
+    <li class="block-region block-repeat" data-group="guidelines-bullet">ℹ️ <span class="block-edit" data-block="bullet-emoji">Bullet point with emoji</span></li>
+    <li class="block-region block-repeat" data-group="guidelines-bullet">✅ <span class="block-edit" data-block="bullet-emoji">Bullet point with emoji</span></li>
+    <li class="block-region block-repeat" data-group="guidelines-bullet">❌ <span class="block-edit" data-block="bullet-emoji">Bullet point with emoji</span></li>
+  </ul>
+  <p class="block-edit block-component">Paragraph description</p>
+  <p class="block-component"><code class="block-edit">Short code block</code></p>
+  <p class="block-component"><code class="window block-edit">Code block with multiple lines</code></p>
+  <div class="block-component" style="display: inline-block; margin-right: 10px;"><img src="https://via.placeholder.com/1200x600?text=Content+Image" width="600" class="block-edit block-resize" style="min-width: 50px; max-width: 880px;" /></div>
+  <div class="two-column block-region block-repeat block-remove">
+    <p><img src="https://via.placeholder.com/600x300?text=Content+Image" width="300" class="block-edit" /></p>
+  </div>
+  <table class="block-component">
+    <tbody>
+      <tr class="block-region block-repeat">
+        <td class="block-edit">®</td>
+        <td class="block-edit">Registered symbol</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="credits block-region block-remove">
+  <p class="block-edit">The initial version of this design system template was made by the <a href="https://blocksedit.com" target="_blank">Blocks Edit</a> team. While a design system doc works as a reference point for your organization to use, <a href="https://blocksedit.com/implementation/" target="_blank">Blocks Edit is a visual editor for your components</a>. So your team can build emails on their own while still following your design system's guidelines.</p>
+</section>
+
+</body>
+</html>
